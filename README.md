@@ -22,25 +22,6 @@
 
 <br />
 
-<!-- Table of Contents -->
-
-# :notebook_with_decorative_cover: Table of Contents
-
-- [About the Project](#about-the-project)
-  - [Screenshots](#screenshots)
-  - [Tech Stack](#tech-stack)
-  - [Features](#features)
-  - [Color Reference](#color-reference)
-  - [Environment Variables](#environment-variables)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Running Tests](#running-tests)
-  - [Run Locally](#run-locally)
-  - [Deployment](#deployment)
-- [License](#license)
-- [Contact](#contact)
-
 <!-- About the Project -->
 
 ## :star2: About the Project
