@@ -1,10 +1,20 @@
 import expess from 'express';
 
-import { getAllUsers, getUserDetails } from '../controllers/user';
+import {
+  deleteUser,
+  getAllUsers,
+  getUserDetails,
+  updateUser,
+} from '../controllers/user';
+import { admin, auth } from '../middleware/auth';
 
 const router = expess.Router();
 
-router.route('/').get(getAllUsers);
-router.route('/:id').get(getUserDetails);
+router.route('/').get(auth, admin, getAllUsers);
+router
+  .route('/:id')
+  .get(getUserDetails)
+  .put(auth, updateUser)
+  .delete(auth, admin, deleteUser);
 
 export default router;

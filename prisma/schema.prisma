@@ -11,38 +11,41 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  email    String  @unique
-  username String
-  role     String  @default("client")
-  password String
-  Order    Order[]
+  id        String    @id @default(uuid())
+  email     String    @unique
+  username  String
+  role      String    @default("client")
+  password  String
+  Order     Order[]
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Product {
-  id           String   @id @default(uuid())
+  id           String    @id @default(uuid())
   name         String
   price        Decimal
   description  String
   image        String
   category     String
   brand        String
-  countInStock Decimal  @default(50)
-  Order        Order?   @relation(fields: [orderId], references: [id])
+  countInStock Decimal   @default(50)
+  Order        Order?    @relation(fields: [orderId], references: [id])
   orderId      String?
-  qty          Int      @default(1)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  qty          Int?      @default(1)
+  createdAt    DateTime? @default(now())
+  updatedAt    DateTime? @updatedAt
 }
 
 model Order {
-  id         String    @id @default(uuid())
-  cartItems  Json
-  user       User?     @relation(fields: [userId], references: [id])
-  userId     String
-  totalPrice Decimal
-  isPaid     Boolean?  @default(false)
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  Product    Product[]
+  id              String    @id @default(uuid())
+  shippingAddress Json
+  cartItems       Json
+  user            User?     @relation(fields: [userId], references: [id])
+  userId          String
+  totalPrice      Decimal
+  isPaid          Boolean?  @default(false)
+  createdAt       DateTime? @default(now())
+  updatedAt       DateTime? @updatedAt
+  Product         Product[]
 }

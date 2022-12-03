@@ -5,6 +5,7 @@ export interface IUser {
   username: string;
   email: string;
   role: string;
+  createdAt: Date;
 }
 
 export interface RequestWithUser extends Request {

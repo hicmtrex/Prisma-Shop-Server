@@ -1,8 +1,11 @@
 import { NextFunction, Response } from 'express';
 import asyncHandler from 'express-async-handler';
-import { DataStoredInToken } from '../src/utils/interfaces/user.interface';
 import jwt from 'jsonwebtoken';
-import db from '../src/lib/prisma';
+import db from '../lib/prisma';
+import {
+  DataStoredInToken,
+  RequestWithUser,
+} from '../utils/interfaces/user.interface';
 
 export const auth = asyncHandler(
   async (req: any, res: Response, next: NextFunction) => {
@@ -23,6 +26,16 @@ export const auth = asyncHandler(
       }
     } else {
       throw res.status(401).json({ message: 'Not authorized, token failed' });
+    }
+  }
+);
+
+export const admin = asyncHandler(
+  async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    if (req.user && req.user.role === 'admin') {
+      next();
+    } else {
+      throw res.status(401).json({ message: 'Not authorized, no admin' });
     }
   }
 );

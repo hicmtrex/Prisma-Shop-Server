@@ -19,8 +19,8 @@ export const userRegister = asyncHandler(
     });
 
     if (exist) {
-      res.status(400);
-      throw new Error('email already used!');
+      res.status(400).json({ message: 'email already used!' });
+      return;
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -60,8 +60,7 @@ export const userRegister = asyncHandler(
       });
       res.status(201).json({ user: userInfo, token });
     } else {
-      res.status(400);
-      throw new Error('user not found!');
+      res.status(400).json({ message: 'user not found!' });
     }
   }
 );
@@ -152,7 +151,7 @@ export const userLogout = asyncHandler(async (req: Request, res: Response) => {
   if (!cookies?.token) {
     throw res.status(204).json({ message: 'no cookies' });
   }
-  
+
   res.clearCookie('token', { httpOnly: true, sameSite: 'none', secure: true });
   res.json({ message: 'Cookie cleared' });
 });
