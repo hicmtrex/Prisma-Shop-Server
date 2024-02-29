@@ -2,7 +2,7 @@ repo_name: hicmtrex/Prisma-Shop-Server
 report_id: feeeec0660468e1088939cbe07ce9aa6
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T08:18:07+00:00'
+timestamp: '2024-02-29T19:09:43+00:00'
 requested_by: invalid-email-address
 provider: github
 branch: main
@@ -137,7 +137,7 @@ tools:
   last_updated_by: Firstname Lastname
   last_updated_on: 2022-11-21 21:04:08.000000000 Z
 - name: Prettier
-  description: 'Prettier is an opinionated code formatter. '
+  description: Prettier is an opinionated code formatter.
   website_url: https://prettier.io/
   version: 2.7.1
   license: MIT
